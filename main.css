@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding: 0;
+ }
+body{
+        width:100%;
+        height:100vh;
+        background-image:url('https://www.hdwallpapers.in/thumbs/2021/light_pink_blue_smoke_plain_blue_background_4k_5k_hd_abstract-t2.jpg');
+        background-size: cover;
+        overflow: hidden;
+ }    
+.container{
+    display:flex;
+    flex-direction: column;
+    width:400px;
+    margin-top: 70px;
+     border-top: 8px solid plum;
+    border-bottom: 8px solid plum;
+    border-left: 6px solid plum;
+    border-right: 6px solid plum;
+}
+.todo{
+    display: flex;
+    justify-content: space-between;
+    padding:1em;
+}
+.todo__value{
+    background:cyan;
+    border: none;
+    outline: none;
+    font-family: 'Quicksand',sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    flex-grow: 1;
+}
+.todo:has(.todo__checkbox:checked) {
+    color: purple;
+    background:bisque;
+    text-decoration: line-through;
+    order:1;
+}
