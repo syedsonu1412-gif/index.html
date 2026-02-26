@@ -1,0 +1,607 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CAMPOS Restaurant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== PAGE BACKGROUND ===== */
+        body {
+            color: #222;
+            background: #f2f2f2;
+            /* luxury light gray */
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 22px 60px;
+            background: #0e1a1f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            color:#c9a24d;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-left: 35px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, .6), rgba(0, 0, 0, .6)),
+                url("https://images.squarespace-cdn.com/content/v1/56a52f211a5203313c359a5b/1688162888141-XRFUMKIMO59IZ27GFYT9/CAMP.Space.Bar.Horizontal.GlassRacks.VannahCo.June2021.03.300dpi.jpg?format=1500w") center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 80px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 110px;
+            color:#c9a24d;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 15px;
+            max-width: 500px;
+        }
+
+        /* ===== SECTIONS (CARD STYLE) ===== */
+        section {
+            padding: 120px 80px;
+            background: ghostwhite;
+            margin: 80px auto;
+            max-width: 1300px;
+            border-radius: 24px;
+        }
+
+        /* alternating section colors */
+        #menu,
+        #book {
+            background: ghostwhite;
+        }
+
+        h2 {
+            font-size: 46px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .about p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* ABOUT SECTION SPACING FIX */
+        #about h2 {
+            margin-bottom: 8px;
+        }
+
+        #about .section-subtitle {
+            margin-bottom: 30px;
+            /* controls gap below subtitle */
+        }
+
+        .about {
+            margin-top: 0;
+            /* removes extra top gap */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about p {
+            margin: 0;
+            /* removes default paragraph spacing */
+            line-height: 1.7;
+        }
+
+        /* ===== MENU ===== */
+        .menu-category {
+            margin-bottom: 70px;
+        }
+
+        .menu-category h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #0e1a1f;
+            border-bottom: 2px solid #c9a24d;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+        }
+
+        .menu-info h4 {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .menu-info p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: 600;
+            color: #c9a24d;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 30px;
+            color: #c9a24d;
+            margin-bottom: 15px;
+        }
+
+
+        footer {
+            background: #0e1a1f;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media(max-width:768px) {
+            section {
+                padding: 100px 30px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* BOOK A TABLE */
+        #book {
+            background: #0e1a1f;
+            color: white;
+            text-align: center;
+        }
+
+        .booking-box {
+            max-width: 500px;
+            margin: 60px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            color: #333;
+        }
+
+        .booking-box input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        .booking-box button {
+            width: 100%;
+            padding: 14px;
+            background: #c9a24d;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .booking-box button:hover {
+            background: #b08d3f;
+        }
+
+        /* SUCCESS MESSAGE */
+        #successMessage {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7f7ef;
+            color: #2e7d32;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+
+        /* MOBILE NAVBAR */
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            color: white;
+            cursor: pointer;
+        }
+
+   
+        /* ===============================
+           MOBILE RESPONSIVE + HAMBURGER
+        ============================== */
+        @media (max-width: 768px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .navbar {
+                padding: 16px 24px;
+            }
+
+            /* SHOW HAMBURGER */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* MOBILE MENU */
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #0e1a1f;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            /* SHOW MENU ON CLICK */
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 12px 0;
+                font-size: 17px;
+                padding: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 0 24px;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            section {
+                padding: 80px 24px;
+                margin: 50px 16px;
+            }
+
+            h2 {
+                font-size: 34px;
+                text-align: center;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style> 
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo">CAMPOS</div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#menu">Menu</a>
+            <a href="#contact">Contact</a>
+            <a href="#book">Book Table</a>
+        </div>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+    <!-- HERO -->
+    <div class="hero">
+        <div>
+            <h1>CAMPOS</h1>
+            <p>Where fine ingredients and elegant dining come together.</p>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About Our Restaurant</h2>
+        <p class="section-subtitle">A modern dining experience</p>
+        <div class="about">
+            <p>
+                CAMPOS offers refined cuisine crafted with passion.
+                Our chefs focus on premium ingredients, elegant presentation,
+                and unforgettable flavors in a welcoming atmosphere.
+            </p>
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1">
+        </div>
+    </section>
+
+    <!-- MENU -->
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <p class="section-subtitle">Carefully curated dishes</p>
+
+        <!-- STARTERS -->
+        <div class="menu-category">
+            <h3>Starters</h3>
+            <div class="menu-items">
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1544025162-d76694265947">
+                    <div class="menu-info">
+                        <h4>Bruschetta</h4>
+                        <p>Tomato, basil, olive oil</p>
+                        <div class="price">$9</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img
+                        src="https://www.shutterstock.com/image-photo/crispy-tasty-fried-calamari-600nw-2479526879.jpg">
+                    <div class="menu-info">
+                        <h4>Calamari</h4>
+                        <p>Crispy squid, lemon aioli</p>
+                        <div class="price">$12</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
+                    <div class="menu-info">
+                        <h4>Truffle Soup</h4>
+                        <p>Mushroom & cream</p>
+                        <div class="price">$11</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd">
+                    <div class="menu-info">
+                        <h4>Fresh Salad</h4>
+                        <p>Seasonal greens</p>
+                        <div class="price">$8</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAINS -->
+        <div class="menu-category">
+            <h3>Main Courses</h3>
+            <div class="menu-items">
+                <div class="menu-card"><img
+                        src="https://media.istockphoto.com/id/587207508/photo/sliced-grilled-steak-ribeye-with-herb-butter.jpg?s=612x612&w=0&k=20&c=gm6Kg6rHYH0xWTF5oszm6NZ-hp9aPRbk9V1kvCr8MQI=">
+                    <div class="menu-info">
+                        <h4>Ribeye Steak</h4>
+                        <p>Rosemary butter</p>
+                        <div class="price">$32</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img
+                        src="https://media.istockphoto.com/id/610681138/photo/shrimp-scampi-with-spaghetti.jpg?s=612x612&w=0&k=20&c=fKuUPOo9NWMl98Sp5Pqu_wJvU8fiCIuJo_5Y6z2TMro=">
+                    <div class="menu-info">
+                        <h4>Seafood Pasta</h4>
+                        <p>White wine sauce</p>
+                        <div class="price">$26</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+                    <div class="menu-info">
+                        <h4>Campos Burger</h4>
+                        <p>Angus beef</p>
+                        <div class="price">$20</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img
+                        src="https://messinthekitchen.com/wp-content/uploads/2020/11/one-pan-chicken-1.jpg">
+                    <div class="menu-info">
+                        <h4>Roasted Chicken</h4>
+                        <p>Herbs & vegetables</p>
+                        <div class="price">$24</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESSERTS -->
+        <div class="menu-category">
+            <h3>Desserts</h3>
+            <div class="menu-items">
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+                    <div class="menu-info">
+                        <h4>Tiramisu</h4>
+                        <p>Classic Italian</p>
+                        <div class="price">$10</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52">
+                    <div class="menu-info">
+                        <h4>Lava Cake</h4>
+                        <p>Chocolate center</p>
+                        <div class="price">$11</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img
+                        src="https://www.janespatisserie.com/wp-content/uploads/2022/07/VanillaCheesecake10-2.jpg">
+                    <div class="menu-info">
+                        <h4>Cheesecake</h4>
+                        <p>Vanilla cream</p>
+                        <div class="price">$9</div>
+                    </div>
+                </div>
+                <div class="menu-card"><img src="https://images.unsplash.com/photo-1562440499-64c9a111f713">
+                    <div class="menu-info">
+                        <h4>Ice Cream</h4>
+                        <p>Seasonal flavors</p>
+                        <div class="price">$7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p class="section-subtitle">We’d love to hear from you</p>
+        <div class="contact-cards">
+            <div class="contact-card"><i class="fas fa-location-dot"></i>
+                <p>123 Downtown Street</p>
+            </div>
+            <div class="contact-card"><i class="fas fa-phone"></i>
+                <p>+1 234 567 890</p>
+            </div>
+            <div class="contact-card"><i class="fas fa-envelope"></i>
+                <p>info@campos.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOK A TABLE -->
+    <section id="book">
+        <h2>Book a Table</h2>
+        <p class="section-subtitle">Reserve your dining experience</p>
+
+        <div class="booking-box">
+            <form id="bookingForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="date" required>
+                <input type="time" required>
+                <input type="number" placeholder="Guests" min="1" max="20" required>
+
+                <button type="submit">Reserve Table</button>
+            </form>
+
+            <!-- SUCCESS MESSAGE -->
+            <div id="successMessage">
+                ✅ Your table has been successfully booked!
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p> Come hungry. Leave inspired.</p>
+        © 2026 CAMPOS Restaurant. All Rights Reserved.
+    </footer>
+    <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+    // Optional: close menu after clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+        });
+    });
+</script>
+</body>
+
+</html> 
